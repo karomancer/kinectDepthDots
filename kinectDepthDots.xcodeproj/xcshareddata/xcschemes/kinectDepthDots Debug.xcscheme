@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "SM03-KarinaChow.app"
-               BlueprintName = "SM03-KarinaChow"
-               ReferencedContainer = "container:SM03-KarinaChow.xcodeproj">
+               BuildableName = "kinectDepthDots.app"
+               BlueprintName = "kinectDepthDots"
+               ReferencedContainer = "container:kinectDepthDots.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "SM03-KarinaChow.app"
-            BlueprintName = "SM03-KarinaChow"
-            ReferencedContainer = "container:SM03-KarinaChow.xcodeproj">
+            BuildableName = "kinectDepthDots.app"
+            BlueprintName = "kinectDepthDots"
+            ReferencedContainer = "container:kinectDepthDots.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -54,9 +54,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "SM03-KarinaChow.app"
-            BlueprintName = "SM03-KarinaChow"
-            ReferencedContainer = "container:SM03-KarinaChow.xcodeproj">
+            BuildableName = "kinectDepthDots.app"
+            BlueprintName = "kinectDepthDots"
+            ReferencedContainer = "container:kinectDepthDots.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "SM03-KarinaChow.app"
-            BlueprintName = "SM03-KarinaChow"
-            ReferencedContainer = "container:SM03-KarinaChow.xcodeproj">
+            BuildableName = "kinectDepthDots.app"
+            BlueprintName = "kinectDepthDots"
+            ReferencedContainer = "container:kinectDepthDots.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

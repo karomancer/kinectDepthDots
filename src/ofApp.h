@@ -12,11 +12,19 @@ public:
     void update();
     void draw();
     
+    void listenForMinDepth(float & min);
+    void listenForMaxDepth(float & max);
+        
     ofxKinectV2 kinect;
+    ofxKinectV2::Settings settings;
     ofTexture depthTex;
     
     ofImage renderImage;
-    ofPixels renderPixels;
+    ofPixels depthPixels;    
     
-    ofxPanel panel;
+    ofParameter<float> minDepth;
+    ofParameter<float> maxDepth;
+    ofParameter<bool> showDepthMap;
+    
+    ofxPanel guiPanel;
 };
