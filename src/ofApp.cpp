@@ -78,8 +78,7 @@ void ofApp::listenForMaxDepth(float & max) {
 }
 
 void ofApp::listenForColorChange(ofColor & newColor) {
-    fillColor = newColor;
-    maxFillColor = ofColor::fromHsb(min(fillColor.getHue() + 40, 360.f), fillColor.getSaturation(), fillColor.getBrightness());
+    fillColor = newColor;    
 }
 
 void ofApp::update()
@@ -118,6 +117,7 @@ void ofApp::draw()
         
         float newHue = fillColor.getHue();
         float minHue = max(newHue - 40, 1.f);
+        float maxHue = min(newHue + 40, 360.f);
         
         float maxNumber = xDensity > yDensity ? depthPixels.getWidth() : depthPixels.getHeight();
         float xMultiplier = (float) ofGetScreenWidth() / depthPixels.getWidth();
@@ -145,7 +145,7 @@ void ofApp::draw()
                             dominantIdx = x + y;
                         }
                         
-                        newHue = ofMap(dominantIdx, 0, maxNumber, minHue, maxFillColor.getHue());
+                        newHue = ofMap(dominantIdx, 0, maxNumber, minHue, maxHue);
                         float newSaturation = ofMap(dist, minDepth, maxDepth, 255, 40);
                         ofSetColor(ofColor::fromHsb(newHue, newSaturation, newSaturation));
                         ofFill();

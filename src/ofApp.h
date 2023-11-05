@@ -36,5 +36,4 @@ public:
     
     ofxPanel guiPanel;
     ofColor fillColor;
-    ofColor maxFillColor;
 };
