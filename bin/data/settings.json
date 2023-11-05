@@ -1,11 +1,15 @@
 {
     "DEPTH_DOTS": {
-        "Anchor_Depth_Offset": "1",
-        "Max_depth": "1.325",
+        "Anchor_Depth_Offset": "2.3",
+        "Base_pixel_size": "2.275",
+        "Color_Palette": "255, 0, 182, 255",
+        "Color_Rave_Party": "1",
+        "Jitterbug": "0",
+        "Max_depth": "1.7375",
         "Min_depth": "0.5",
         "Show_Kinect_Depth_Map": "0",
         "Show_as_grid": "1",
-        "X_Density": "10",
+        "X_Density": "1",
         "Y_Density": "1"
     }
 }

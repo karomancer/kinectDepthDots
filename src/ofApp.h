@@ -14,12 +14,12 @@ public:
     
     void listenForMinDepth(float & min);
     void listenForMaxDepth(float & max);
+    void listenForColorChange(ofColor & newColor);
         
     ofxKinectV2 kinect;
     ofxKinectV2::Settings settings;
     ofTexture depthTex;
     
-    ofImage offGridMultiplier;
     ofPixels depthPixels;    
     
     ofParameter<float> minDepth;
@@ -28,8 +28,13 @@ public:
     ofParameter<short> yDensity;
     ofParameter<float> anchorDepth;
     
-    ofParameter<bool> showAsGrid;
+    ofParameter<ofColor> colorPalette;
+    ofParameter<bool> colorRaveParty;
+    
+    ofParameter<bool> addTheJitters;
     ofParameter<bool> showDepthMap;
     
     ofxPanel guiPanel;
+    ofColor fillColor;
+    ofColor maxFillColor;
 };
