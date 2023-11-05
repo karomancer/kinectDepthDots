@@ -11,30 +11,33 @@ void ofApp::setup()
     ofBackground(255);
     
     // Set up rendered image
-    renderImage.allocate(ofGetScreenWidth(), ofGetScreenHeight(), OF_IMAGE_GRAYSCALE);
+    offGridMultiplier.allocate(ofGetScreenWidth(), ofGetScreenHeight(), OF_IMAGE_GRAYSCALE);
     
     // Set up GUI panel
     guiPanel.setup("DEPTH_DOTS", "settings.json");
     
     minDepth.set("Min depth", 0.5f, 0.5f, 8.f);
-    minDepth.addListener(this, &ofApp::listenForMinDepth);
+    //    minDepth.addListener(this, &ofApp::listenForMinDepth);
     
-    maxDepth.set("Max depth", 8.f, 0.5f, 8.f);
-    maxDepth.addListener(this, &ofApp::listenForMaxDepth);
+    maxDepth.set("Max depth", 5.f, 0.5f, 8.f);
+    //    maxDepth.addListener(this, &ofApp::listenForMaxDepth);
     
-    xDensity.set("X Density", 1, 1, 5);
-    yDensity.set("Y Density", 1, 1, 5);
-    anchorDepth.set("Anchor Depth Offset", 0.f, 0.f, 5.f);
+    xDensity.set("X Density", 2, 1, 10);
+    yDensity.set("Y Density", 2, 1, 10);
+    anchorDepth.set("Anchor Depth Offset", .75f, 0.f, 5.f);
     
-    showDepthMap.set("Show Kinect Depth Map", true);
+    showAsGrid.set("Show as grid", true);
+    showDepthMap.set("Show Kinect Depth Map", false);
     
     
+    guiPanel.add(showDepthMap);
     guiPanel.add(minDepth);
     guiPanel.add(maxDepth);
-    guiPanel.add(showDepthMap);
+    
     guiPanel.add(xDensity);
     guiPanel.add(yDensity);
     guiPanel.add(anchorDepth);
+    guiPanel.add(showAsGrid);
     
     // Set up Kinect
     settings.enableRGB = false;
@@ -47,6 +50,8 @@ void ofApp::setup()
     kinect.open(0, settings);
 }
 
+// No longer using listeners...closing and reopening with new settings is too expensive
+// DEPRECATED:
 void ofApp::listenForMinDepth(float & min) {
     kinect.close();
     
@@ -56,6 +61,7 @@ void ofApp::listenForMinDepth(float & min) {
     kinect.open(0, settings);
 }
 
+// DEPRECATED:
 void ofApp::listenForMaxDepth(float & max) {
     kinect.close();
     
@@ -74,17 +80,6 @@ void ofApp::update()
     {
         depthPixels = kinect.getDepthPixels();
         depthTex.loadData(depthPixels);
-        
-        // Find largest "radius" (largest distance away)
-        maxRadius = 0;
-        for (int y = 0; y < depthPixels.getHeight(); y++) {
-            for (int x = 0; x < depthPixels.getWidth(); x++) {
-                float dist = kinect.getDistanceAt(x, y);
-                if (dist > maxRadius) {
-                    maxRadius = dist;
-                }
-            }
-        }
     }
 }
 
@@ -119,8 +114,11 @@ void ofApp::draw()
         for (int y = 0; y < depthPixels.getHeight(); y += yDensity) {
             for (int x = 0; x < depthPixels.getWidth(); x += xDensity) {
                 float dist = kinect.getDistanceAt(x, y);
-                if (dist > 0) {
-                    ofDrawCircle(x * xMultiplier + anchorDepth, y * yMultiplier + anchorDepth, maxRadius - anchorDepth - dist);
+                float randomX = showAsGrid ? 0 : ofRandom(xMultiplier);
+                float randomY = showAsGrid ? 0 : ofRandom(xMultiplier);
+                if (dist > minDepth && dist < maxDepth) {
+                    float radius = ofMap(dist, minDepth, maxDepth, anchorDepth * (xDensity + yDensity)/2, 0);
+                    ofDrawCircle(x * xMultiplier + anchorDepth + randomX, y * yMultiplier + anchorDepth + randomY, radius);
                 }
             }
         }

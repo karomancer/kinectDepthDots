@@ -19,7 +19,7 @@ public:
     ofxKinectV2::Settings settings;
     ofTexture depthTex;
     
-    ofImage renderImage;
+    ofImage offGridMultiplier;
     ofPixels depthPixels;    
     
     ofParameter<float> minDepth;
@@ -27,9 +27,9 @@ public:
     ofParameter<short> xDensity;
     ofParameter<short> yDensity;
     ofParameter<float> anchorDepth;
-    ofParameter<bool> showDepthMap;
     
-    float maxRadius = 0.f;
+    ofParameter<bool> showAsGrid;
+    ofParameter<bool> showDepthMap;
     
     ofxPanel guiPanel;
 };

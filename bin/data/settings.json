@@ -1,0 +1,11 @@
+{
+    "DEPTH_DOTS": {
+        "Anchor_Depth_Offset": "1",
+        "Max_depth": "1.325",
+        "Min_depth": "0.5",
+        "Show_Kinect_Depth_Map": "0",
+        "Show_as_grid": "1",
+        "X_Density": "10",
+        "Y_Density": "1"
+    }
+}
