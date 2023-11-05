@@ -24,7 +24,12 @@ public:
     
     ofParameter<float> minDepth;
     ofParameter<float> maxDepth;
+    ofParameter<short> xDensity;
+    ofParameter<short> yDensity;
+    ofParameter<float> anchorDepth;
     ofParameter<bool> showDepthMap;
+    
+    float maxRadius = 0.f;
     
     ofxPanel guiPanel;
 };
